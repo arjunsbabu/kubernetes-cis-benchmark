@@ -59,11 +59,12 @@ else
     warn "$check_2_1_7"
 fi
 
+
 check_2_1_8="2.1.8  - Ensure that the --make-iptables-util-chains argument is set to true"
-if check_argument 'kubelet' '--make-iptables-util-chains=true' >/dev/null 2>&1; then
-    pass "$check_2_1_8"
-else
+if check_argument '/opt/kubernetes/hyperkube kubelet' '--make-iptables-util-chains=false' >/dev/null 2>&1; then
     warn "$check_2_1_8"
+else
+    pass "$check_2_1_8"
 fi
 
 check_2_1_9="2.1.9  - Ensure that the --keep-terminated-pod-volumes argument is set to false"
